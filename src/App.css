@@ -41,6 +41,8 @@ body{
 }
 
 .navigation {
+  display: flex;
+  flex-direction: column;
   height: calc(100vh - 20px);
   width: 350px;
   background-color: #D1D1D1;
@@ -166,7 +168,8 @@ body{
 .chatContainer{
   display: flex;
   flex-direction: column;
-  height: calc(100% - 280px);
+  flex: 1;
+  min-height: 0;
   overflow-y: scroll;
   scrollbar-width: none;
 }
