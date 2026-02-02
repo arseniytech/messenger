@@ -1,6 +1,3 @@
-
-
-
 const NotFoundPage = () => {
     return(
         <div className="mainBlock">

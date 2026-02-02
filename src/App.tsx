@@ -5,19 +5,6 @@ import SettingsPage from './pages/SettingsPage';
 import CallsPage from './pages/CallsPage';
 import NotFoundPage from './pages/NotFoundPage';
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 function App() {
   return (
     <BrowserRouter>

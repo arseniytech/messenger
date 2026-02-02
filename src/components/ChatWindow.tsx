@@ -21,8 +21,7 @@ export const ChatWindow = () => {
       sendMessage(value);
       target.value = '';
     }
-  }, 
-  [sendMessage]);
+  }, [sendMessage]);
 
 
   useEffect(()=>{

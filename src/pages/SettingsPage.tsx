@@ -13,8 +13,8 @@ const SettingsPage = () => {
         </div>
 
         <div className="chatContainer">
-          <div className="chatItem" style={{ cursor: 'default' }}>
-            <div className="userInfo" style={{ width: '100%' }}>
+          <div className="chatItem" style={{cursor: 'default'}}>
+            <div className="userInfo" style={{width: '100%'}}>
               <div className="chatTop">
                 <span className="userName">Settings</span>
                 <span className="chatTime"></span>

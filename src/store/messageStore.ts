@@ -8,71 +8,47 @@ export type Message = {
 };
 
 export type User = {
-  userName: string,
-  userMessage: string,
-  userAvatar?: string,
-  userOnline: boolean,
-  messageTime?: string,
-  lastMessage?: string,
+  userName: string;
+  userMessage: string;
+  userAvatar?: string;
+  userOnline: boolean;
+  messageTime?: string;
+  lastMessage?: string;
 };
 
 
 type MessageStore = {
-    contacts: User[];
-    activeUser: User | null;
-    messages: Record<string, Message[]>;
-    setActiveUser:(user: User) => void;
-    addMessage: (userName: string, text: string, sent?: boolean) => void;
-}
+  contacts: User[];
+  activeUser: User | null;
+  messages: Record<string, Message[]>;
+  setContacts: (contacts: User[]) => void;
+  setActiveUser: (user: User) => void;
+  addMessage: (userName: string, text: string, sent?: boolean) => void;
+};
+
 export const useMessageStore = create<MessageStore>((set, get) => ({
-    contacts: [
-    {
-        userName: "Vasya",
-        userMessage: "hello world('print')",
-        userAvatar: "https://placehold.co/50x50",
-        userOnline: true,
-        messageTime: "10:12",
-        lastMessage: "qwerty",
-    },
+  // start with empty contacts; we'll load them from the API
+  contacts: [],
 
-  
-    {
-        userName: "Werty",
-        userMessage: "bye",
-        userAvatar: "https://placehold.co/50x50",
-        userOnline: true,
-        messageTime: "12:12",
-        lastMessage: "yo",
-    },
+  activeUser: null,
 
-    {
-        userName: "GHJ",
-        userMessage: "ninja, aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        userAvatar: "https://placehold.co/50x50",
-        userOnline: true,
-        messageTime: "20:12",
-        lastMessage: "!!!!!",
-    },
-],
+  messages: {},
 
-    activeUser: null,
+  setContacts: (contacts) => set({ contacts }),
 
+  setActiveUser: (user) => {
+    console.log('setActiveUser', user);
+    set({ activeUser: user });
+  },
 
-
-    messages: {
-        "Vasya": [{text: "privet", sent: false }],
-        "Werty": [{text  : "watsUP", sent: true }],
-},
-
-    setActiveUser: (user) => {console.log('setActiveUser', user); set({activeUser: user})},
-    addMessage: (userName, text, sent = true) => {
-        const { messages } = get();
-        const userMessages = messages[userName] || [];
-        const updatedMessages = {
-            ...messages, 
-            [userName]: [...userMessages, {text, sent}],
-        };
-        set({ messages: updatedMessages });
-    },
+  addMessage: (userName, text, sent = true) => {
+    const { messages } = get();
+    const userMessages = messages[userName] || [];
+    const updatedMessages = {
+      ...messages,
+      [userName]: [...userMessages, { text, sent }],
+    };
+    set({ messages: updatedMessages });
+  },
 }));
 
